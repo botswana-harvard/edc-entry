@@ -1,6 +1,6 @@
 # edc_metadata
 
-[![Build Status](https://travis-ci.org/botswana-harvard/edc-metadata.svg?branch=develop)](https://travis-ci.org/botswana-harvard/edc-metadata) [![Coverage Status](https://coveralls.io/repos/github/botswana-harvard/edc-metadata/badge.svg?branch=develop)](https://coveralls.io/github/botswana-harvard/edc-metadata?branch=develop)
+[![Build Status](https://travis-ci.org/clinicedc/edc-metadata.svg?branch=develop)](https://travis-ci.org/clinicedc/edc-metadata) [![Coverage Status](https://coveralls.io/repos/github/clinicedc/edc-metadata/badge.svg?branch=develop)](https://coveralls.io/github/clinicedc/edc-metadata?branch=develop)
 
 `edc-metadata` puts a "metadata" layer on top of your data collection forms, namely CRFs and Requisitions. The "metadata" can be used on a data entry dashboard as is done by `edc_dashboard` or by a data manager to review the completion status of required forms.
 
