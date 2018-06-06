@@ -13,7 +13,8 @@ class RequisitionMetaDataManager(BaseMetaDataManager):
 
     def __init__(self, visit_model, visit_attr_name=None):
         self._target_requisition_panel = None
-        super(RequisitionMetaDataManager, self).__init__(visit_model, visit_attr_name)
+        super(RequisitionMetaDataManager, self).__init__(
+            visit_model, visit_attr_name)
 
     def __repr__(self):
         return 'RequisitionMetaDataManager({0.instance!r})'.format(self)
@@ -54,12 +55,13 @@ class RequisitionMetaDataManager(BaseMetaDataManager):
                     app_label=self.model._meta.app_label.lower(),
                     model_name=self.model._meta.object_name.lower(),
                     visit_definition__code=self.visit_instance.appointment.visit_definition.code,
-                    visit_definition__instruction=self.visit_instance.appointment.visit_definition.instriction,
-                    requisition_panel__name__iexact=self.target_requisition_panel.lower() if isinstance(self.target_requisition_panel, str) else self.target_requisition_panel.name.lower(),
+                    visit_definition__instruction=self.visit_instance.appointment.visit_definition.instruction,
+                    requisition_panel__name__iexact=self.target_requisition_panel.lower() if isinstance(
+                        self.target_requisition_panel, str) else self.target_requisition_panel.name.lower(),
                 )
             except self.entry_model.DoesNotExist:
                 pass
-                #raise ImproperlyConfigured('LabEntry matching query does not exist. Model {0}.Check your'
+                # raise ImproperlyConfigured('LabEntry matching query does not exist. Model {0}.Check your'
                 #                           ' visit schedule configuration or rule groups.'.format(self.model))
             if self.visit_instance.appointment.visit_instance != '0':
                 entry_status = 'NOT_REQUIRED'
