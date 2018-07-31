@@ -78,7 +78,7 @@ class LabEntry(BaseUuidModel):
     def form_title(self):
         self.content_type_map.content_type.model_class()._meta.verbose_name
 
-    def __unicode__(self):
+    def __str__(self):
         return '{0}.{1}'.format(self.visit_definition.code, self.requisition_panel.name)
 
     @property

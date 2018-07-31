@@ -23,7 +23,7 @@ class RequisitionPanel(BaseModel):
 
     objects = RequisitionPanelManager()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def natural_key(self):

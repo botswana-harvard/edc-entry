@@ -26,7 +26,7 @@ class RequisitionMetaData(BaseMetaData):
 
     objects = NaturalKeyRequisitionMetaDataManager()
 
-    def __unicode__(self):
+    def __str__(self):
         return '%s: %s' % (self.registered_subject.subject_identifier, self.lab_entry.requisition_panel.name)
 
     def natural_key(self):
