@@ -10,17 +10,19 @@ class MetadataGetter:
     metadata_model = None
 
     def __init__(self, appointment=None, subject_identifier=None, visit_code=None,
-                 visit_code_sequence=None):
+                 visit_code_sequence=None, schedule_name=None):
         try:
             self.visit = appointment.visit
         except AttributeError:
             self.subject_identifier = subject_identifier
             self.visit_code = visit_code
             self.visit_code_sequence = visit_code_sequence
+            self.schedule_name = schedule_name
         else:
             self.subject_identifier = self.visit.subject_identifier
             self.visit_code = self.visit.visit_code
             self.visit_code_sequence = self.visit.visit_code_sequence
+            self.schedule_name = self.visit.schedule_name
         self.metadata_objects = self.metadata_model_cls.objects.filter(
             **self.options).order_by('show_order')
 
@@ -32,10 +34,13 @@ class MetadataGetter:
     def options(self):
         """Returns a dictionary of query options.
         """
-        return dict(
+        options = dict(
             subject_identifier=self.subject_identifier,
             visit_code=self.visit_code,
             visit_code_sequence=self.visit_code_sequence)
+        if self.schedule_name:
+            options.update(schedule_name=self.schedule_name)
+        return options
 
     def next_object(self, show_order=None, entry_status=None):
         """Returns the next model instance based on the show order.
